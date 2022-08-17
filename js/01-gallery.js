@@ -42,7 +42,7 @@ function modalShow(event) {
     function keyBoardPress(event) {
     
     if (event.code === 'Escape') {
-        console.log(event.code)
+        // console.log(event.code)
         modal.close();
         document.removeEventListener('keydown', keyBoardPress)
     }
