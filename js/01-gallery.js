@@ -7,9 +7,12 @@ const galleryMarkup = createGalleryItems(galleryItems);
 gallery.insertAdjacentHTML('beforeend', galleryMarkup);
 gallery.addEventListener('click', onGalleryItemsClick);
 
+let modal = basicLightbox.create(`<img src="" width="800" height="600">`)
+// console.log(modal.element())
+
 function createGalleryItems(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
-        return `<a class="gallery__link" href="${original}" target="_parent">
+        return `<a class="gallery__link" href="${original}">
          <img
          class="gallery__image"
          src="${preview}"
@@ -33,9 +36,10 @@ function onGalleryItemsClick(event) {
 }
 
 function modalShow(event) {
-  const modal = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">`)
-    modal.show();
+    // console.log(modal.element().querySelector('img'))
+const createElementSrc = modal.element().querySelector('img').src = event.target.dataset.source;
+modal.show(createElementSrc);
+
 
     document.addEventListener('keydown', keyBoardPress)
 
